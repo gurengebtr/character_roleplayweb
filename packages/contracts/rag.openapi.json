@@ -1,0 +1,592 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AI Character RAG",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/background/publish": {
+      "post": {
+        "summary": "Publish",
+        "operationId": "publish_background_publish_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Publish"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/context": {
+      "post": {
+        "summary": "Context",
+        "operationId": "context_context_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Context"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/memory/ingest": {
+      "post": {
+        "summary": "Ingest",
+        "operationId": "ingest_memory_ingest_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/memory/list": {
+      "post": {
+        "summary": "List Memory",
+        "operationId": "list_memory_memory_list_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryScope"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/memory/delete": {
+      "post": {
+        "summary": "Delete Memory",
+        "operationId": "delete_memory_memory_delete_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryScope"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/background/delete": {
+      "post": {
+        "summary": "Delete Background",
+        "operationId": "delete_background_background_delete_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Scope"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Context": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "User Id"
+          },
+          "character_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Character Id"
+          },
+          "conversation_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Conversation Id"
+          },
+          "query": {
+            "type": "string",
+            "maxLength": 12000,
+            "minLength": 1,
+            "title": "Query"
+          },
+          "background_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Background Version"
+          },
+          "memory_enabled": {
+            "type": "boolean",
+            "title": "Memory Enabled",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "character_id",
+          "conversation_id",
+          "query"
+        ],
+        "title": "Context"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Ingest": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "User Id"
+          },
+          "character_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Character Id"
+          },
+          "conversation_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Conversation Id"
+          },
+          "job_id": {
+            "type": "string",
+            "title": "Job Id"
+          },
+          "source_message_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Message Ids"
+          },
+          "facts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "title": "Facts"
+          },
+          "phase_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phase Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "character_id",
+          "conversation_id",
+          "job_id",
+          "source_message_ids",
+          "facts"
+        ],
+        "title": "Ingest"
+      },
+      "MemoryScope": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "User Id"
+          },
+          "character_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Character Id"
+          },
+          "conversation_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Conversation Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "character_id",
+          "conversation_id"
+        ],
+        "title": "MemoryScope"
+      },
+      "Publish": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "User Id"
+          },
+          "character_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Character Id"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 100000,
+            "title": "Text"
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "character_id",
+          "text",
+          "version"
+        ],
+        "title": "Publish"
+      },
+      "Scope": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "User Id"
+          },
+          "character_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Character Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "character_id"
+        ],
+        "title": "Scope"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

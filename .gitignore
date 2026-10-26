@@ -1,0 +1,40 @@
+# Dependencies and generated builds
+node_modules/
+.next/
+apps/web/next-env.d.ts
+.venv/
+# Private configuration and runtime data
+.env
+.env.*
+!.env.example
+.local/
+# Python caches and test tooling
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+.tox/
+.nox/
+*.pyc
+*.tsbuildinfo
+
+# Test source in tests/ stays tracked; only generated results are ignored.
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+coverage/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+junit.xml
+
+*.egg-info/
+build/
+.DS_Store
+*.log
+*.har
+*.pem
+*.key

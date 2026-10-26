@@ -1,0 +1,20 @@
+name: ai-character-mvp
+services:
+  mongo:
+    image: mongo:8.0
+    ports: ["127.0.0.1:27028:27017"]
+    volumes: ["mongo-data:/data/db"]
+    labels: {ai.character.managed: "true"}
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+  qdrant:
+    image: qdrant/qdrant:v1.17.0
+    ports: ["127.0.0.1:6338:6333"]
+    volumes: ["qdrant-data:/qdrant/storage"]
+    labels: {ai.character.managed: "true"}
+volumes:
+  mongo-data:
+  qdrant-data:

@@ -1,0 +1,26 @@
+{
+  "name": "ai-character",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "python3 scripts/dev.py",
+    "build": "npm run build --workspace apps/web",
+    "typecheck": "npm run typecheck --workspace apps/web",
+    "test": ".venv/bin/python -m pytest tests -q",
+    "test:e2e": "playwright test",
+    "contracts": ".venv/bin/python scripts/export_contracts.py && openapi-typescript packages/contracts/api.openapi.json -o packages/contracts/api.d.ts",
+    "lint": ".venv/bin/ruff check services scripts tests && .venv/bin/ruff format --check services scripts tests",
+    "format": "prettier --write \"apps/web/src/**/*.{ts,tsx,css}\" tests/e2e/*.ts playwright.config.ts && .venv/bin/ruff format services scripts tests"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "openapi-typescript": "7.13.0",
+    "prettier": "3.9.9"
+  }
+}
